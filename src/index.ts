@@ -3,7 +3,7 @@ export const { toast: Toasts } = common;
 import { defaultSettings } from "./lib/consts";
 import { registerSettings } from "./Components/Settings";
 export const PluginLogger = Logger.plugin("Address");
-export const SettingValues = await settings.init("Tharki.Address", defaultSettings);
+export const SettingValues = await settings.init("dev.tharki.Address", defaultSettings);
 import { AddressMenuItem } from "./Components/MenuItem";
 
 import { HBCM } from "./lib/HomeButtonContextMenuApi";
