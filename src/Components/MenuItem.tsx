@@ -13,6 +13,7 @@ export const AddressMenuItem = (
       label: "Copy Address",
       id: "copy-address",
       icon: () => Icons.glob("20", "20"),
+      children: [],
       action: () => {
         try {
           const Address = SettingValues.get("normalizeAddress", defaultSettings.normalizeAddress)

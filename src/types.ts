@@ -1,37 +1,11 @@
 import { types as DefaultTypes } from "replugged";
 export { types as DefaultTypes } from "replugged";
-export { ReactElement, ComponentClass, UIEvent } from "react";
-import { ReactElement, UIEvent } from "react";
+export { ReactElement, ComponentClass, MouseEvent } from "react";
+import { ReactElement } from "react";
 declare global {
   interface Window {
     HomeButtonContextMenuApi: HomeButtonContextMenuApi;
   }
-}
-export interface ContextMenuArgs {
-  className: string;
-  config: { context: string };
-  context: string;
-  onHeightUpdate: DefaultTypes.AnyFunction;
-  position: null | number;
-  target: HTMLElement;
-  theme: string;
-}
-export interface ExtendedContextMenuArgs extends ContextMenuArgs {
-  onClose: DefaultTypes.AnyFunction;
-}
-export interface ContextMenu {
-  close: DefaultTypes.AnyFunction;
-  open: (
-    event: UIEvent,
-    render?: ContextMenu,
-    options?: { enableSpellCheck?: boolean },
-    renderLazy?: Promise<ContextMenu>,
-  ) => void;
-  openLazy: (
-    event: UIEvent,
-    renderLazy?: Promise<ContextMenu>,
-    options?: { enableSpellCheck?: boolean },
-  ) => void;
 }
 export interface HomeButtonContextMenuApi {
   items?: Map<string, ReactElement>;
