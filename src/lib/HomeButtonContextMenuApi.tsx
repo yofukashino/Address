@@ -31,7 +31,7 @@ class HomeButtonContextMenuApi {
   }
 }
 
-export const HBCM = await new Promise<Types.HomeButtonContextMenuApi>((resolve, reject) => {
+export default await new Promise<Types.HomeButtonContextMenuApi>((resolve, reject) => {
   try {
     if (Object.hasOwnProperty.call(window, "HomeButtonContextMenuApi"))
       resolve(window.HomeButtonContextMenuApi);
