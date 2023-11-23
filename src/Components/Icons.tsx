@@ -1,5 +1,4 @@
-import * as Types from "../types";
-export const glob = (width: number | string, height: number | string): Types.ReactElement => (
+export const glob = (width: number | string, height: number | string): React.ReactElement => (
   <svg {...{ viewBox: "0 0 490 490", width, height }}>
     <path
       {...{
@@ -11,3 +10,5 @@ export const glob = (width: number | string, height: number | string): Types.Rea
     />
   </svg>
 );
+
+export default {glob};

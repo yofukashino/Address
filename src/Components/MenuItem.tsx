@@ -1,12 +1,11 @@
-import { components } from "replugged";
-import { PluginLogger, SettingValues, Toasts } from "../index";
+import { toast as Toasts } from "replugged/common";
+import { ContextMenu } from "replugged/components";
+import { PluginLogger, SettingValues } from "../index";
 import { defaultSettings } from "../lib/consts";
 import { DiscordNative } from "../lib/requiredModules";
-import * as Icons from "./Icons";
+import Icons from "./Icons";
 
-const {
-  ContextMenu: { MenuItem },
-} = components;
+const { MenuItem } = ContextMenu;
 export const AddressMenuItem = (
   <MenuItem
     {...{

@@ -1,14 +1,12 @@
 import { types as DefaultTypes } from "replugged";
 export { types as DefaultTypes } from "replugged";
-export { ReactElement, ComponentClass, MouseEvent } from "react";
-import { ReactElement } from "react";
 declare global {
   interface Window {
     HomeButtonContextMenuApi: HomeButtonContextMenuApi;
   }
 }
 export interface HomeButtonContextMenuApi {
-  items?: Map<string, ReactElement>;
+  items?: Map<string, React.ReactElement>;
   constructor?: DefaultTypes.AnyFunction;
   addItem?: DefaultTypes.AnyFunction;
   removeItem?: DefaultTypes.AnyFunction;
@@ -195,3 +193,5 @@ export interface Settings {
   showToast: boolean;
   normalizeAddress: boolean;
 }
+
+export * as default from "./types";

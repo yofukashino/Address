@@ -1,5 +1,4 @@
-import { Logger, common, settings } from "replugged";
-export const { toast: Toasts } = common;
+import { Logger, settings } from "replugged";
 import { defaultSettings } from "./lib/consts";
 import { registerSettings } from "./Components/Settings";
 export const PluginLogger = Logger.plugin("Address");

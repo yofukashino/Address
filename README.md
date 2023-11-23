@@ -4,14 +4,14 @@ Get an option to copy the current web address by right clicking on the home butt
 
 Same as the URL in your browser.
 
-Direct Download Link: [dev.tharki.Address.asar](https://github.com/Tharki-God/Address/releases/latest/download/dev.tharki.Address.asar)
+Direct Download Link: [dev.tharki.Address.asar](https://github.com/TharkiDev/Address/releases/latest/download/dev.tharki.Address.asar)
 
 Install Link:
 
 
 [![Install in Replugged](https://img.shields.io/badge/-Install%20in%20Replugged-blue?style=for-the-badge&logo=none)](https://replugged.dev/install?identifier=dev.tharki.Address)
 
-![image](https://tharki-god.github.io/files-random-host/bdpluginsassets/address.png)
+![image](https://TharkiDev.github.io/files-random-host/bdpluginsassets/address.png)
 
 > For issues related to plugin either DM the dev or ask in support server listed below.
 >
