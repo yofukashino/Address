@@ -11,4 +11,4 @@ export const glob = (width: number | string, height: number | string): React.Rea
   </svg>
 );
 
-export default {glob};
+export default { glob };
