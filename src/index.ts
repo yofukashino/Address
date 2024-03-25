@@ -5,8 +5,6 @@ export const PluginLogger = Logger.plugin("Address");
 export const SettingValues = await settings.init("dev.tharki.Address", defaultSettings);
 import { AddressMenuItem } from "./Components/MenuItem";
 
-import HBCM from "./lib/HomeButtonContextMenuApi";
-
 export const start = (): void => {
   registerSettings();
   HBCM.getAPI().addItem("Address", AddressMenuItem);
