@@ -15,17 +15,13 @@ export const Settings = () => {
   return (
     <div>
       <SwitchItem
-        {...{
-          note: "Get a confirmation/error message when copying the web address.",
-          ...util.useSetting(SettingValues, "showToast", defaultSettings.showToast),
-        }}>
+        note="Get a confirmation/error message when copying the web address."
+        {...util.useSetting(SettingValues, "showToast", defaultSettings.showToast)}>
         Pop-up/Toast
       </SwitchItem>
       <SwitchItem
-        {...{
-          note: "Replace PTB/Canary links with normal (Stable) Discord links.",
-          ...util.useSetting(SettingValues, "normalizeAddress", defaultSettings.normalizeAddress),
-        }}>
+        note="Replace PTB/Canary links with normal (Stable) Discord links."
+        {...util.useSetting(SettingValues, "normalizeAddress", defaultSettings.normalizeAddress)}>
         Normalize address
       </SwitchItem>
     </div>

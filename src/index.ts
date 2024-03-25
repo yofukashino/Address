@@ -9,11 +9,11 @@ import HBCM from "./lib/HomeButtonContextMenuApi";
 
 export const start = (): void => {
   registerSettings();
-  HBCM.addItem("Address", AddressMenuItem);
+  HBCM.getAPI().addItem("Address", AddressMenuItem);
 };
 
 export const stop = (): void => {
-  HBCM.removeItem("Address");
+  HBCM.getAPI().removeItem("Address");
 };
 
 export { Settings } from "./Components/Settings";
