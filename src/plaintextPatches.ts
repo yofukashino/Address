@@ -3,6 +3,7 @@ import Types from "@types";
 export default [
   {
     find: '("discodo")',
+    warn: false,
     replacements: [
       {
         match: /\.tutorialContainer(?!onContextMenu:)/,
