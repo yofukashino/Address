@@ -5,24 +5,22 @@ import { ContextMenu } from "replugged/components";
 class HomeContext {
   #items: Map<string | symbol, () => React.ReactElement>;
   #navId = "yofukashino-home-context";
-  constructor() {
+  public constructor() {
     this.#items = new Map();
     this.open = this.open.bind(this);
   }
-  add(id: string | symbol, item: () => React.ReactElement) {
+  public add(id: string | symbol, item: () => React.ReactElement): void {
     this.#items.set(id, item);
   }
-  remove(id: string | symbol) {
+  public remove(id: string | symbol): void {
     this.#items.delete(id);
   }
-  open(event: React.MouseEvent) {
+  public open(event: React.MouseEvent): void {
     const items = this.#items.size
-      ? Array.from(
-          this.#items
-            .values()
-            .map((i) => i())
-            .filter(Boolean),
-        ).sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
+      ? Array.from(this.#items.values())
+          .map((i) => i())
+          .filter(Boolean)
+          .sort((a, b) => a?.props?.label?.localeCompare(b?.props?.label))
       : [];
 
     contextMenu.open(event, (props) => (
@@ -32,9 +30,9 @@ class HomeContext {
     ));
   }
 
-  static MODULE_ID = "HomeContext";
+  private static MODULE_ID = "HomeContext" as const;
 
-  static get(): HomeContext {
+  public static get(): HomeContext {
     if (webpack.wpRequire.c[this.MODULE_ID]?.loaded === false)
       delete webpack.wpRequire.c[this.MODULE_ID];
 

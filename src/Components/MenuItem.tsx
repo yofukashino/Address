@@ -1,12 +1,12 @@
 import { toast } from "replugged/common";
 import { ContextMenu } from "replugged/components";
 import { PluginLogger, SettingValues } from "@this";
-import { defaultSettings } from "@consts";
+import { DefaultSettings } from "@consts";
 import Icons from "@icons";
 
-export default () => {
-  const showToast = SettingValues.get("showToast", defaultSettings.showToast);
-  const normalizeAddress = SettingValues.get("normalizeAddress", defaultSettings.normalizeAddress);
+export default (): React.ReactElement => {
+  const showToast = SettingValues.get("showToast", DefaultSettings.showToast);
+  const normalizeAddress = SettingValues.get("normalizeAddress", DefaultSettings.normalizeAddress);
   const Address = normalizeAddress
     ? window.location.href.replace(/:\/\/\w+.discord.com/, "://discord.com")
     : window.location.href;

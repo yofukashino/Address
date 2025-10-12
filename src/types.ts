@@ -2,11 +2,6 @@ import { types } from "replugged";
 import type { WebpackChunkGlobal } from "replugged/dist/types";
 export namespace Types {
   export import DefaultTypes = types;
-
-  export interface Settings {
-    showToast: boolean;
-    normalizeAddress: boolean;
-  }
 }
 
 export default Types;

@@ -1,6 +1,6 @@
 export const MENU_ITEM_ID = Symbol("Address");
 
-export const defaultSettings = {
+export const DefaultSettings = {
   showToast: true,
   normalizeAddress: true,
 };

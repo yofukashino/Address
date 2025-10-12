@@ -1,29 +1,32 @@
 import { util } from "replugged";
 import { Switch } from "replugged/components";
 import { PluginLogger, SettingValues } from "@this";
-import { defaultSettings } from "@consts";
-import Types from "@types";
+import { DefaultSettings } from "@consts";
 
 export const registerSettings = (): void => {
-  for (const key in defaultSettings) {
-    if (SettingValues.has(key as keyof Types.Settings)) return;
-    PluginLogger.log(`Adding new setting ${key} with value ${defaultSettings[key]}.`);
-    SettingValues.set(key as keyof Types.Settings, defaultSettings[key]);
+  type DefaultSettings = typeof DefaultSettings;
+  type key = keyof DefaultSettings;
+  type value = DefaultSettings[key];
+
+  for (const key in DefaultSettings) {
+    if (SettingValues.has(key as key)) return;
+    PluginLogger.log(`Adding new setting ${key} with value ${DefaultSettings[key]}.`);
+    SettingValues.set(key as key, DefaultSettings[key] as value);
   }
 };
 
-export const Settings = () => {
+export const Settings = (): React.ReactElement => {
   return (
     <>
       <Switch
         label={"Pop-up/Toast"}
         description="Get a confirmation/error message when copying the web address."
-        {...util.useSetting(SettingValues, "showToast", defaultSettings.showToast)}
+        {...util.useSetting(SettingValues, "showToast", DefaultSettings.showToast)}
       />
       <Switch
         label={"Normalize address"}
         description="Replace PTB/Canary links with normal (Stable) Discord links."
-        {...util.useSetting(SettingValues, "normalizeAddress", defaultSettings.normalizeAddress)}
+        {...util.useSetting(SettingValues, "normalizeAddress", DefaultSettings.normalizeAddress)}
       />
     </>
   );
