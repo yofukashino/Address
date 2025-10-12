@@ -1,34 +1,37 @@
-import { toast as Toasts } from "replugged/common";
+import { toast } from "replugged/common";
 import { ContextMenu } from "replugged/components";
-import { PluginLogger, SettingValues } from "../index";
-import { defaultSettings } from "../lib/consts";
-import Icons from "./Icons";
+import { PluginLogger, SettingValues } from "@this";
+import { defaultSettings } from "@consts";
+import Icons from "@icons";
 
-const { MenuItem } = ContextMenu;
-export const AddressMenuItem = (
-  <MenuItem
-    label="Copy Address"
-    id="copy-address"
-    icon={() => <Icons.globe width="24" height="24" />}
-    action={() => {
-      try {
-        const Address = SettingValues.get("normalizeAddress", defaultSettings.normalizeAddress)
-          ? `https://discord.com/${window.location.href.split("discord.com/")[1]}`
-          : window.location.href;
-        if (!Address) {
-          PluginLogger.error("Whoops! I couldn't find the current web address.");
-          if (SettingValues.get("showToast", defaultSettings.showToast))
-            Toasts.toast("Whoops! I couldn't find the current web address.", Toasts.Kind.FAILURE);
-          return;
+export default () => {
+  const showToast = SettingValues.get("showToast", defaultSettings.showToast);
+  const normalizeAddress = SettingValues.get("normalizeAddress", defaultSettings.normalizeAddress);
+  const Address = normalizeAddress
+    ? window.location.href.replace(/:\/\/\w+.discord.com/, "://discord.com")
+    : window.location.href;
+
+  return (
+    <ContextMenu.MenuItem
+      label="Copy Address"
+      id="copy-address"
+      icon={() => <Icons.globe width="24" height="24" />}
+      action={() => {
+        try {
+          if (!Address) {
+            PluginLogger.error("Whoops! I couldn't find the current web address.");
+            if (showToast)
+              toast.toast("Whoops! I couldn't find the current web address.", toast.Kind.FAILURE);
+            return;
+          }
+
+          DiscordNative.clipboard.copy(Address);
+          if (showToast) toast.toast("Address Copied to Clipboard.", toast.Kind.SUCCESS);
+        } catch (error) {
+          if (showToast) toast.toast(`Error Copying the address.`, toast.Kind.FAILURE);
+          PluginLogger.error(error);
         }
-        DiscordNative.clipboard.copy(Address);
-        if (SettingValues.get("showToast", defaultSettings.showToast))
-          Toasts.toast("Address Copied to Clipboard.", Toasts.Kind.SUCCESS);
-      } catch (error) {
-        if (SettingValues.get("showToast", defaultSettings.showToast))
-          Toasts.toast(`Error: ${error}.`, Toasts.Kind.FAILURE);
-        PluginLogger.error(error);
-      }
-    }}
-  />
-);
+      }}
+    />
+  );
+};

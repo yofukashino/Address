@@ -1,12 +1,13 @@
-import Types from "./types";
+import Types from "@types";
+
 export default [
   {
     find: '("discodo")',
     replacements: [
       {
-        match: /.tutorialContainer,/,
+        match: /\.tutorialContainer(?!onContextMenu:)/,
         replace: (prefix: string) =>
-          `${prefix}onContextMenu:window[Symbol.for("HomeButtonContextMenuApi")]?.openContextMenu,`,
+          `${prefix},onContextMenu:(e)=>replugged.webpack.wpRequire("HomeContext")?.open(e)`,
       },
     ],
   },

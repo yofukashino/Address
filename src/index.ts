@@ -1,19 +1,19 @@
 import { Logger, settings } from "replugged";
-import { defaultSettings } from "./lib/consts";
-import { registerSettings } from "./Components/Settings";
-export const PluginLogger = Logger.plugin("Address");
-export const SettingValues = await settings.init("dev.tharki.Address", defaultSettings);
-import { AddressMenuItem } from "./Components/MenuItem";
+import { MENU_ITEM_ID, defaultSettings } from "@consts";
+import Settings from "@components/Settings";
+import AddressMenuItem from "@components/MenuItem";
+import HomeContext from "@HomeContext";
 
-import HBCM from "./lib/HomeButtonContextMenuApi";
+export const PluginLogger = Logger.plugin("Address", "#ffffff80");
+export const SettingValues = settings.init("dev.tharki.Address", defaultSettings);
 
 export const start = (): void => {
-  registerSettings();
-  HBCM.getAPI().addItem("Address", AddressMenuItem);
+  Settings.registerSettings();
+  HomeContext.add(MENU_ITEM_ID, AddressMenuItem);
 };
 
 export const stop = (): void => {
-  HBCM.getAPI().removeItem("Address");
+  HomeContext.remove(MENU_ITEM_ID);
 };
 
-export { Settings } from "./Components/Settings";
+export { Settings } from "@components/Settings";
