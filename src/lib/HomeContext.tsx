@@ -3,13 +3,13 @@ import { contextMenu } from "replugged/common";
 import { ContextMenu } from "replugged/components";
 
 class HomeContext {
-  #items: Map<string | symbol, () => React.ReactElement>;
+  #items: Map<string | symbol, () => React.ReactElement | null>;
   #navId = "yofukashino-home-context";
   public constructor() {
     this.#items = new Map();
     this.open = this.open.bind(this);
   }
-  public add(id: string | symbol, item: () => React.ReactElement): void {
+  public add(id: string | symbol, item: () => React.ReactElement | null): void {
     this.#items.set(id, item);
   }
   public remove(id: string | symbol): void {
